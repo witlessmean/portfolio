@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { createGlobalStyle } from 'styled-components';
+import Nav from './components/navigation/Nav'
+import TechShowcase from './components/techStack/TechShowcase'
+
+const GlobalStyle = createGlobalStyle`
+html {
+  font-size: 62.5%;  
+  box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+body{
+  font-size: 1.6rem;
+  margin: 0;
+}`
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <GlobalStyle/>
+     <Nav />
+     <TechShowcase />
+    
+    </>
   );
 }
 
