@@ -1,0 +1,16 @@
+fix and finish menu component. (test)
+
+add dark mode to navigation. (test)    
+
+make nav sticky? -- remove the actual nav bar on scroll but not the nav menu. (test) 
+
+add media queries to techstack pictures. (test)
+
+add projects section. about projects to the left - responsive showcase to the right (test)
+
+add links section. github, resume, blog youtube, blog codepen (test)
+
+contact form. (test)
+
+footer. 
+
