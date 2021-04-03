@@ -4,6 +4,7 @@ import TechShowcase from './components/techStack/TechShowcase'
 
 const GlobalStyle = createGlobalStyle`
 html {
+  font-family: 'Roboto', sans-serif;
   font-size: 62.5%;  
   box-sizing: border-box;
   }
