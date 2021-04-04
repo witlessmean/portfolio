@@ -3,8 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 
 export const StyledHR = styled.hr`
-margin-top: 5vh;
-margin-bottom: 4vh;
+margin-top: 1vh;
+margin-bottom: 1vh;
 border: 0;
 height: 0.1vh;
 background-image: linear-gradient(
