@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
+import { db } from "./firebase";
 
 const StyledFormContainer = styled.div``;
 
@@ -68,6 +69,24 @@ const ContactForm = () => {
   const submitPostRequest = (event) => {
     event.preventDefault();
     console.log("submitted");
+    db.collection('contacts').add({
+
+        name: formState.name,
+        email: formState.email,
+        textarea: formState.textarea,
+
+    }).then(() => {
+        alert("Message has been submitted")
+    }).catch((error) => {
+      alert(error.message)
+    });
+
+    // setFormState({
+    //     name: "",
+    //     email: "",
+    //     textarea: "",
+    //});
+
   };
 
   return (
