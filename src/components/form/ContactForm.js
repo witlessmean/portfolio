@@ -1,12 +1,29 @@
-import styled from "styled-components";
 import * as yup from "yup";
 import { useState, useEffect } from "react";
 import { db } from "./firebase";
+import styled from "styled-components";
+import { ThemeProvider } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import EmailIcon from "@material-ui/icons/Email";
+import SendIcon from '@material-ui/icons/Send';
+import { StyledHR, formStyles, theme } from "../../utils/reuseableStyles";
 
-const StyledFormContainer = styled.div``;
-
+const StyledFormContainer = styled.div`
+  text-align: center;
+`;
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const StyledValidationError = styled.p`
-color: red;`
+  color: red;
+  font-weight: bolder;
+`;
 
 const ContactForm = () => {
   const formSchema = yup.object().shape({
@@ -32,7 +49,7 @@ const ContactForm = () => {
   useEffect(() => {
     formSchema.isValid(formState).then((valid) => {
       setSubmitButtonDisabled(!valid);
-      console.log("is it valid?", valid)
+      console.log("is it valid?", valid);
     });
   }, [formState, formSchema]);
 
@@ -47,7 +64,6 @@ const ContactForm = () => {
         });
       })
       .catch((error) => {
-        //console.log(error);
         setValidationErrors({
           ...validationErrors,
           [event.target.name]: error.message,
@@ -63,62 +79,104 @@ const ContactForm = () => {
     };
     validateChange(event);
     setFormState(validateChangeState);
-    //console.log(event.target.value);
+    console.log(formState)
   };
 
   const submitPostRequest = (event) => {
     event.preventDefault();
     console.log("submitted");
-    db.collection('contacts').add({
-
+    db.collection("contacts")
+      .add({
         name: formState.name,
         email: formState.email,
         textarea: formState.textarea,
-
-    }).then(() => {
-        alert("Message has been submitted")
-    }).catch((error) => {
-      alert(error.message)
-    });
-
-    // setFormState({
-    //     name: "",
-    //     email: "",
-    //     textarea: "",
-    //});
-
+      })
+      .then(() => {
+        alert("Message sent, Thank you!");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+      setFormState({
+        name: "",
+        email: "",
+        textarea: "",
+      })
   };
 
   return (
     <StyledFormContainer>
-      <form onSubmit={submitPostRequest}>
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
+      <ThemeProvider theme={theme}>
+      <h2>Contact</h2>
+      <StyledHR />
+      <StyledForm onSubmit={submitPostRequest}>
+        <TextField
           name="name"
           id="name"
-          value={formState.name}
+          label="name:"
           onChange={handleInputChange}
+          value={formState.name}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircleIcon style={formStyles.iconStyles} />
+              </InputAdornment>
+            ),
+      }}
         />
         {validationErrors.name.length > 0 ? (
-          <StyledValidationError> {validationErrors.name}</StyledValidationError>
+          <StyledValidationError>
+            {" "}
+            {validationErrors.name}
+          </StyledValidationError>
         ) : null}
-        <label htmlFor="email">Email:</label>
-        <input type="email" name="email" id="email" value={formState.email} onChange={handleInputChange} />
+        <TextField
+          name="email"
+          id="email"
+          label="email:"
+          onChange={handleInputChange}
+          value={formState.email}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+               <EmailIcon style={formStyles.iconStyles} />
+              </InputAdornment>
+            ),
+          }}
+        />
         {validationErrors.name.length > 0 ? (
-          <StyledValidationError> {validationErrors.email}</StyledValidationError>
+          <StyledValidationError>
+            {" "}
+            {validationErrors.email}
+          </StyledValidationError>
         ) : null}
-        <label htmlFor="textarea">Your Message:</label>
-        <textarea type="text" name="textarea" id="textarea" value={formState.textarea} onChange={handleInputChange} />
+        <label htmlFor="textarea"></label>
+        <TextField
+          name="textarea"
+          id="textarea"
+          label="message"
+          multiline
+          rows={6}
+          variant="outlined"
+          onChange={handleInputChange}
+          value={formState.textarea}
+          style={{ width: "25rem", margin: "1.8vh" }}
+          inputProps={formStyles.inputStyles}
+        />
         {validationErrors.name.length > 0 ? (
-          <StyledValidationError> {validationErrors.textarea}</StyledValidationError>
+          <StyledValidationError>
+            {" "}
+            {validationErrors.textarea}
+          </StyledValidationError>
         ) : null}
-        <input type="submit" disabled={submitButtonDisabled} />
-      </form>
+        <Button variant="outlined" type="submit" disabled={submitButtonDisabled}>send 
+        <SendIcon />
+        </Button>
+      </StyledForm>
+    </ThemeProvider>
     </StyledFormContainer>
   );
 };
 
 export default ContactForm;
 
-//dont show errors unless submitted. get rid of 2 error. make errors red. 

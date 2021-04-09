@@ -14,11 +14,6 @@ const StyledTechContainer = styled.div`
     flex-wrap: wrap;
   }
 
-  h2 {
-    display: inline-block;
-    text-align: center;
-  }
-
   svg {
     @media ${device.tablet} {
       width: 40px;
@@ -29,7 +24,6 @@ const StyledTechContainer = styled.div`
     height: 121px;
   }
 `;
-//add mediaQ's for the svgs.
 
 const TechShowcase = () => {
   return (

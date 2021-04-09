@@ -23,6 +23,7 @@ html {
 body{
   font-size: 1.6rem;
   margin: 0;
+  background-color: #FFFAFA;
 }`;
 
 function App() {
