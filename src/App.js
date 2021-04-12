@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import Nav from "./components/navigation/Nav";
 import TechShowcase from "./components/techStack/TechShowcase";
 import ContactForm from "./components/form/ContactForm";
+import ProjectShowcase from "./components/projects/ProjectShowcase";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -36,6 +37,7 @@ function App() {
       <GlobalStyle />
       <Nav />
       <TechShowcase />
+      <ProjectShowcase />
       <ContactForm />
     </div>
   );

@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import IconButton from '@material-ui/core/IconButton';
 
-const NavMenu = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-      };
-    
-      const handleClose = () => {
-        setAnchorEl(null);
-      };
-    
-    return (
-        <>
-            <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}> 
-                <MenuIcon fontSize="large"/>
-                <Menu
+export default function NavMenu() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+        Open Menu
+      </Button>
+      <Menu
         id="simple-menu"
         anchorEl={anchorEl}
         keepMounted
@@ -30,12 +30,9 @@ const NavMenu = () => {
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
-            </IconButton>
-        </>
-    )
+    </div>
+  );
 }
-
-export default NavMenu
 
 
 

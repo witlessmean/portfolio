@@ -49,7 +49,6 @@ const ContactForm = () => {
   useEffect(() => {
     formSchema.isValid(formState).then((valid) => {
       setSubmitButtonDisabled(!valid);
-      console.log("is it valid?", valid);
     });
   }, [formState, formSchema]);
 
@@ -72,19 +71,17 @@ const ContactForm = () => {
   };
 
   const handleInputChange = (event) => {
-    event.persist();
+    event.persist(); 
     const validateChangeState = {
       ...formState,
       [event.target.name]: event.target.value,
     };
     validateChange(event);
     setFormState(validateChangeState);
-    console.log(formState)
   };
 
   const submitPostRequest = (event) => {
     event.preventDefault();
-    console.log("submitted");
     db.collection("contacts")
       .add({
         name: formState.name,

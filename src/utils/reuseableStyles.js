@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import { createMuiTheme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 export const StyledHR = styled.hr`
   margin-top: 1vh;
@@ -33,11 +34,10 @@ export const formStyles = {
   iconStyles: {
     fontSize: "25px"
   },
-  inputStyles: { style: {fontSize: "1.6rem", lineHeight: "1.4" } 
+  inputStyles: { style: {fontSize: "2rem", lineHeight: "1.4", fontWeight: "800" } 
 }, 
 buttonStyles:  {fontSize: "1.6rem"} 
-
-}
+  };
 
 
 export const theme = createMuiTheme({
@@ -45,7 +45,8 @@ export const theme = createMuiTheme({
     MuiInput: {
      root: {
       fontSize: "2rem", 
-      margin: "2vh 0" 
+      margin: "2vh 0",
+      fontWeight: "800" 
      }, 
    }, 
    MuiButton: {
@@ -68,3 +69,19 @@ export const theme = createMuiTheme({
     },
 });
 
+export const CustomCardButton = withStyles({
+  root: {
+    width: '5vw',
+    height: '2.5em',
+    fontWeight: 'bolder',
+    fontSize: 17,
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: '#c4dbf5',
+      borderColor: '#005cbf',
+    },
+    '&:focus': {
+      boxShadow: '0 0 0 0.2rem rgba(0,120,255,.8)',
+    },
+  },
+})(Button);
