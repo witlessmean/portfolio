@@ -1,9 +1,17 @@
-import React, { useEffect, } from "react";
+import React, { useEffect, useContext } from "react";
 import storage from "local-storage-fallback";
 import { CustomMoonIcon, CustomSunIcon } from '../../../utils/reuseableStyles';
 import IconButton from '@material-ui/core/IconButton';
+import { ModeContext } from "./ModeContext";
 
-const DarkMode = ({ mode, setMode }) => {
+export const getInitialMode = () => {
+    const savedMode = storage.getItem("mode");
+    return savedMode ? JSON.parse(savedMode) : false;
+  };
+
+const DarkMode = () => {
+    
+    const { mode, setMode } = useContext(ModeContext);
     
     useEffect(() => {
         storage.setItem("mode", JSON.stringify(mode));

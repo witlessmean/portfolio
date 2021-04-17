@@ -74,35 +74,6 @@ export const formStyles = {
   buttonStyles: { fontSize: "1.6rem" },
 };
 
-export const theme = createMuiTheme({
-  overrides: {
-    MuiInput: {
-      root: {
-        fontSize: "2rem",
-        margin: "2vh 0",
-        fontWeight: "800",
-      },
-    },
-    MuiButton: {
-      root: {
-        fontSize: "1.6rem",
-        fontWeight: "bolder",
-        "&:hover": {
-          boxShadow: "0 0 0 0.2rem rgba(0,120,255,.8)",
-        },
-      },
-    },
-  },
-  props: {
-    MuiInputLabel: {
-      style: { fontSize: "2.5rem", fontWeight: "900" },
-    },
-    MuiTextField: {
-      style: { fontSize: "2.5rem" },
-    },
-  },
-});
-
 export const CustomCardButton = withStyles({
   root: {
     width: "5vw",
@@ -136,3 +107,4 @@ export const CustomMoonIcon = withStyles({
     color: '#f7f7f7'
   }
 })(Brightness4Icon);
+

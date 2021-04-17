@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { GlobalStyle, theme } from './utils/reuseableStyles';
+import React, { useState } from "react";
+import { GlobalStyle, theme } from "./utils/reuseableStyles";
 import Nav from "./components/navigation/Nav";
 import TechShowcase from "./components/techStack/TechShowcase";
 import ContactForm from "./components/form/ContactForm";
 import ProjectShowcase from "./components/projects/ProjectShowcase";
-import storage from "local-storage-fallback";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { ThemeProvider } from '@material-ui/core/styles';
-
+import { getInitialMode } from "./components/navigation/darkMode/DarkMode";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { ModeContext } from "./components/navigation/darkMode/ModeContext";
 
 AOS.init({
   // disable: 'phone'
@@ -18,30 +18,25 @@ AOS.init({
 
 function App() {
 
-  const getInitialMode = () => {
-    const savedMode = storage.getItem("mode");
-    return savedMode ? JSON.parse(savedMode) : false;
-  };
- 
   const [mode, setMode] = useState(getInitialMode);
 
   return (
-    <ThemeProvider theme={theme}>
-    <div
-      data-aos="fade-in"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
-    >
-      <GlobalStyle mode={mode} />
-      <Nav mode={mode} setMode={setMode} />
-      <TechShowcase />
-      <ProjectShowcase />
-      <ContactForm />
-    </div>
-    </ThemeProvider>
-
+    // <ThemeProvider theme={theme}>
+      <ModeContext.Provider value={{mode, setMode}} >
+        <div
+          data-aos="fade-in"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+        >
+          <GlobalStyle mode={mode} />
+          <Nav />
+          <TechShowcase />
+          <ProjectShowcase />
+          <ContactForm />
+        </div>
+      </ModeContext.Provider>
+    // </ThemeProvider>
   );
 }
 
 export default App;
-
