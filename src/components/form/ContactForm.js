@@ -2,14 +2,13 @@ import * as yup from "yup";
 import { useState, useEffect } from "react";
 import { db } from "./firebase";
 import styled from "styled-components";
-import { ThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import EmailIcon from "@material-ui/icons/Email";
 import SendIcon from '@material-ui/icons/Send';
-import { StyledHR, formStyles, theme } from "../../utils/reuseableStyles";
+import { StyledHR, formStyles } from "../../utils/reuseableStyles";
 
 const StyledFormContainer = styled.div`
   text-align: center;
@@ -103,7 +102,7 @@ const ContactForm = () => {
 
   return (
     <StyledFormContainer>
-      <ThemeProvider theme={theme}>
+      <StyledHR style={{visibility: "hidden"}} />
       <h2>Contact</h2>
       <StyledHR />
       <StyledForm onSubmit={submitPostRequest}>
@@ -170,7 +169,6 @@ const ContactForm = () => {
         <SendIcon />
         </Button>
       </StyledForm>
-    </ThemeProvider>
     </StyledFormContainer>
   );
 };

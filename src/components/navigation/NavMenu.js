@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import { CustomMenuItem } from "../../utils/reuseableStyles";
+import NavIcon from './NavIcon';
 
 export default function NavMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
   };
 
   const handleClose = () => {
@@ -17,7 +18,7 @@ export default function NavMenu() {
   return (
     <div>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        Open Menu
+        <NavIcon />
       </Button>
       <Menu
         id="simple-menu"
@@ -26,9 +27,9 @@ export default function NavMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <CustomMenuItem onClick={handleClose}>Profile</CustomMenuItem>
+        <CustomMenuItem onClick={handleClose}>My account</CustomMenuItem>
+        <CustomMenuItem onClick={handleClose}>Logout</CustomMenuItem>
       </Menu>
     </div>
   );
