@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import { withStyles, createMuiTheme } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -19,7 +19,7 @@ html {
 body{
   font-size: 1.6rem;
   margin: 0;
-
+  width: 100%;
   background-color: ${ (props) => {
             return props.mode === true ? '#181818' : '#FFFAFA'
     } 
@@ -32,6 +32,7 @@ body{
    h2 {
      margin-top: 15vh;
    }
+
 }`;
 
 export const StyledHR = styled.hr`
@@ -91,9 +92,6 @@ export const CustomCardButton = withStyles({
   },
 })(Button);
 
-
-////Icons////
-//########//
 export const CustomSunIcon = withStyles({
   root: {
     fontSize: '3.5rem',

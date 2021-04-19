@@ -21,7 +21,7 @@ const DarkMode = () => {
 return (
   <>
    <IconButton style={{ marginLeft: "3vw" }} onClick={() => {
-      setMode(!mode)
+     setMode(!mode)
     }} >
         { mode ? <CustomSunIcon /> : <CustomMoonIcon /> } 
     </IconButton>
@@ -30,3 +30,8 @@ return (
 };
 
 export default DarkMode;
+
+
+
+
+

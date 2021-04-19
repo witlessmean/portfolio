@@ -28,7 +28,7 @@ const StyledTechContainer = styled.div`
 const TechShowcase = () => {
   return (
     <StyledContainer>
-      <h2>Technologies I Use</h2>
+      <h2 id="technologies"> Technologies I Use </h2>
       <StyledHR />
       <StyledTechContainer>
         <CustomTooltip title="HTML">

@@ -141,7 +141,7 @@ const ContactForm = () => {
     <ThemeProvider theme={theme}>
       <StyledFormContainer>
         <StyledHR style={{ visibility: "hidden" }} />
-        <h2>Contact</h2>
+        <h2 id="contact"> Contact </h2>
         <StyledHR />
         <StyledForm onSubmit={submitPostRequest}>
           <TextField

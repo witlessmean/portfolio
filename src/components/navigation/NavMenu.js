@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import { CustomMenuItem } from "../../utils/reuseableStyles";
 import NavIcon from './NavIcon';
+import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'react-scroll'
+
+
 
 export default function NavMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -17,9 +20,9 @@ export default function NavMenu() {
 
   return (
     <div>
-      <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+      <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{marginRight: '4vw'}}>
         <NavIcon />
-      </Button>
+      </IconButton>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -27,9 +30,9 @@ export default function NavMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <CustomMenuItem onClick={handleClose}>Profile</CustomMenuItem>
-        <CustomMenuItem onClick={handleClose}>My account</CustomMenuItem>
-        <CustomMenuItem onClick={handleClose}>Logout</CustomMenuItem>
+       <Link to="technologies" smooth={true} duration={500}><CustomMenuItem onClick={handleClose}>Technologies</CustomMenuItem></Link>
+       <Link to="projects" smooth={true} duration={500}> <CustomMenuItem onClick={handleClose}>Projects</CustomMenuItem></Link>
+      <Link to="contact" smooth={true} duration={500}> <CustomMenuItem onClick={handleClose}>Contact</CustomMenuItem></Link>
       </Menu>
     </div>
   );

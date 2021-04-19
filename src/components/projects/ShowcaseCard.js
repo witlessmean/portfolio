@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -29,16 +29,23 @@ const useStyles = makeStyles({
 const ShowcaseCard = () => {
   const { mode } = useContext(ModeContext);
 
-  const darkTheme = createMuiTheme({
+  const theme = createMuiTheme({
     palette: {
       type: mode ? "dark" : "light",
+    },
+    overrides: {
+      MuiButton: {   
+        root: {
+          fontWeight: "900",
+        },
+      },
     },
   });
 
   const classes = useStyles();
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <StyledProjectsContainer>
         {projectObj.map((obj) => {
           return (
@@ -72,10 +79,10 @@ const ShowcaseCard = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="large" color="primary">
+                <Button size="large" color="primary" href={obj.projectSite}>
                   Site
                 </Button>
-                <Button size="large" color="primary">
+                <Button size="large" color="primary" href={obj.projectCode}>
                   Code
                 </Button>
               </CardActions>
